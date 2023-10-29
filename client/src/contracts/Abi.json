@@ -63,6 +63,12 @@
                 },
                 {
                     "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_candidateId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
                     "internalType": "address",
                     "name": "_electionCommission",
                     "type": "address"
@@ -119,31 +125,24 @@
             "name": "EcPollInfo",
             "outputs": [
                 {
-                    "components": [
-                        {
-                            "internalType": "uint256",
-                            "name": "pollId",
-                            "type": "uint256"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "winnerName",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "partyName",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "address",
-                            "name": "winnerAdd",
-                            "type": "address"
-                        }
-                    ],
-                    "internalType": "struct Vote.PollInfo[]",
+                    "internalType": "uint256",
                     "name": "",
-                    "type": "tuple[]"
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
                 }
             ],
             "stateMutability": "view",
@@ -240,6 +239,19 @@
                     "internalType": "bool",
                     "name": "",
                     "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "checkVoterID",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
                 }
             ],
             "stateMutability": "view",
@@ -374,56 +386,6 @@
             "type": "function"
         },
         {
-            "inputs": [],
-            "name": "voterList",
-            "outputs": [
-                {
-                    "components": [
-                        {
-                            "internalType": "string",
-                            "name": "name",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "age",
-                            "type": "uint256"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "voterId",
-                            "type": "uint256"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "gender",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "voteCandidateId",
-                            "type": "uint256"
-                        },
-                        {
-                            "internalType": "address",
-                            "name": "voterAddress",
-                            "type": "address"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "pollID",
-                            "type": "uint256"
-                        }
-                    ],
-                    "internalType": "struct Vote.Voter[]",
-                    "name": "",
-                    "type": "tuple[]"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
             "inputs": [
                 {
                     "internalType": "string",
@@ -479,5 +441,4 @@
             "type": "function"
         }
     ]
-
 }

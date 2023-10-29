@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+const Navigation = () => {
 
 
   return (
@@ -60,7 +60,7 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Navigation;
 
 
 // {/* 

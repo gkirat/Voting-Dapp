@@ -63,6 +63,7 @@ function App() {
   console.log("Logged in user Id", state.signer)
   // console.log(state)
   // console.log(pIdEc)
+  // console.log(info)
 
 
   return ( 
@@ -78,6 +79,111 @@ function App() {
 }
 
 export default App;
+
+
+
+// import Login from "./pages/Login";
+// import Nav from "./pages/Nav";
+// import Dashboard from "./pages/Dashboard";
+// import Candidate from "./pages/Candidate";
+// import Voter from "./pages/Voter";
+// import ElectionCommission from "./pages/ElectionCommission";
+// import { RouterProvider,createBrowserRouter } from "react-router-dom";
+// import {useNavigate} from "react-router-dom"
+// import {useState,useEffect} from 'react';
+// // import {createClient,cacheExchange,fetchExchange} from "@urql/core"
+// import "./App.css";
+
+
+
+
+// function App() {
+
+//   const [state,setState] =useState({
+//     provider:null,
+//     contract:null,
+//     signer:null
+//   });
+
+//   const [info,setInfo]= useState()
+
+//   const [pIdEc,setPIdEc] = useState({       //Pid is short for current poll id and Ec is for election commsion 
+//     pollId:null,
+//     EcAddress:null      
+//   })
+
+
+//   const setinfo = async(data)=>{
+//     setInfo(data)
+//   }
+
+
+//   const details = async(_pollId,_EcAddress) =>{
+//       setPIdEc({pollId:_pollId,EcAddress:_EcAddress})
+//   }
+
+//   const wallet =async(provider,contract,signer)=>{   //this function sets the provider and signer or EOA address of the client that has logged in 
+//     setState({provider:provider,contract:contract,signer:signer})
+//   }
+
+//   const handleCase =(name)=>{    //For converting the case , First letter upper case and rest lower case
+//     let temp = name.slice(0,1)
+//     let temp1 =  name.slice(1,name.length)
+//     temp = temp.toUpperCase()
+//     temp1 = temp1.toLowerCase()
+//     return (temp  + temp1)
+//   }
+  
+
+
+//   const router = createBrowserRouter([
+//     {path:"/",element:<Login wallet={wallet} />},
+//     // {path:"/Dashboard",element:<Dashboard state={state} info={info} details={details} setinfo={setinfo}  />},
+//     {path:"/Dashboard",element:<Dashboard state={state} info={info} details={details} setinfo={setinfo} pIdEc={pIdEc}  />},
+//     {path:"/Candidate",element:<Candidate state={state} handleCase={handleCase} />},
+//     {path:"/Voter",element:<Voter state={state} handleCase={handleCase}  />},
+//     {path:"/ElectionCommission",element:<ElectionCommission state={state} handleCase={handleCase} />},
+//   ])
+
+//   console.log("Logged in user Id", state.signer)
+//   // console.log(state)
+//   // console.log(pIdEc)
+//   // console.log(info)
+
+//   const history = useNavigate();
+
+//   useEffect(() => {
+//     const handleBeforeUnload = (event) => {
+//       event.preventDefault();
+//       history.push('/'); // Redirect to the login page on reload
+//     };
+
+//     window.addEventListener('beforeunload', handleBeforeUnload);
+
+//     return () => {
+//       window.removeEventListener('beforeunload', handleBeforeUnload);
+//     };
+//   }, [history]);
+//   return ( 
+  
+//     <div className="bg-slate-50 w-full h-screen dark:bg-slate-800  overflow-hidden transition-colors duration-700 ">
+      
+//       <Nav />
+//       <RouterProvider router={router} />
+
+//     </div>
+
+//   );
+// }
+
+// export default App;
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+// ^^^^^^^^^^^^^^^^^^^^^^^
+
 // I have to see
 // w-12
 // h-6

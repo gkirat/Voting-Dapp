@@ -3,20 +3,17 @@ import Navigation from "./Navigation";
 import List from "../components/List";
 import UserCard from "../components/UserCard";
 import ElectionCard from "../components/ElectionCard";
+import Winner from "../components/Winner";
 import { useEffect, useState } from "react";
 import { createClient, cacheExchange, fetchExchange } from "@urql/core";
 
 
 const Dashboard = ({ state, info, details, pIdEc, setinfo }) => {
   const [run, setRun] = useState(false);
-  const date = new Date().toLocaleDateString();
 
   const queryUrl = "https://api.studio.thegraph.com/query/55899/testing/version/latest";
   const query = `{
-    ecWinners(
-      first: 10
-      where: {_electionCommission: "${pIdEc.EcAddress}"}
-    ) {
+    ecWinners(first: 10 where: {_electionCommission: "${pIdEc.EcAddress}"}) {
       id
       _info_pollId
       _info_winnerName
@@ -27,6 +24,7 @@ const Dashboard = ({ state, info, details, pIdEc, setinfo }) => {
       id
       _name
       _party
+      _candidateId
       _electionCommission
       _pollId
     }
@@ -38,7 +36,8 @@ const Dashboard = ({ state, info, details, pIdEc, setinfo }) => {
       _electionCommission
     }
   }
-`;
+`
+
 
   const client = createClient({
     url: queryUrl,
@@ -62,7 +61,6 @@ const Dashboard = ({ state, info, details, pIdEc, setinfo }) => {
     }
   };
 
-
   useEffect(() => {
     getPidEc();
     setifo();
@@ -79,37 +77,57 @@ const Dashboard = ({ state, info, details, pIdEc, setinfo }) => {
       <Navigation />
       <div className=" p-4 w-full flex space-x-20 dark:text-slate-50">
 
-        <div className=" w-[60%] h-[100%] p-4  " id="UserVotingStatus">
-          <h1 className="mb-10 tracking-wide text-gray-600 dark:text-gray-400 text-2xl ">Registered candidates</h1>
-          <div className=" w-[100%]">
+        {/* Candidate detail cards starts */}
+        <div className=" w-[60%] h-[100%] p-4 " id="UserVotingStatus">
+          <h1 className="mb-10 tracking-wide text-gray-600 dark:text-gray-400 text-2xl ">Registered Candidates</h1>
+          <div className=" w-[100%] gap-4">
+
+            {/* Candidate detail cards start here */}
             {run ? (
-                <div className="grid grid-rows-4 grid-flow-col gap-12 w-[90%]">
+                <div className="grid grid-rows-2 grid-flow-col gap-12 w-[90%] md:mb-10">
                   {info.candidates.map((candidate, index) => {
                     return (
                       <List
+                        state={state}
                         key={index}
                         name={candidate._name}
                         party={candidate._party}
+                        // when candidate id is also emmitted add here
+                        id={candidate._candidateId}
                         setValue={true}
                       />
                     );
                   })}
                 </div>
             ) : (
-                <div className="grid grid-rows-4 grid-flow-col gap-12 w-[90%]">
+                <div className="grid grid-rows-1 grid-flow-col gap-12 w-[90%] md:mb-10">
                   <List setValue={false} />
                 </div>
             )}
+            {/* Candidate detail cards start here */}
           </div>
+          
+          {/* Winner starts here */} 
+          <div className=" w-[90%] ">
+
+            <h1 className="mb-10 tracking-wide text-gray-600 dark:text-gray-400 text-2xl ">Winner</h1>    
+            <Winner state={state} />
+          </div>
+          {/* Winner ends here */}
+          
         </div>
+        {/* Candidate detail cards ends */}
 
+        {/* Election and user detail cards starts */}
         <div className=" w-[35%] h-[100%] p-4 flex flex-col space-y-10 " id="UserVotingStatus">
-
+            
           <ElectionCard state={state} info={info} />
 
           <UserCard state={state} />
 
         </div>
+        {/* Election and user detail cards ends */}
+        
       </div>
     </div>
   );

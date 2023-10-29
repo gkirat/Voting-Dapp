@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 const ElectionCard = ({ state, info }) => {
-  const date = new Date().toLocaleTimeString();
+  const date = new Date().toLocaleString();
 //   const dat = new Date().getTime()
 //   console.log(dat)
 
@@ -10,20 +10,21 @@ const ElectionCard = ({ state, info }) => {
   const [endTime, setEndTime] = useState(date);
   const [pollEnded, setPollEnded] = useState();
   const [endTimeInUnix,setUnixTime] = useState()
+  const [status,setStatus] = useState()
 
   const getTime = async () => {
     try {
       const _startTime = Number(await state.contract.startTime());
       const _endTime = Number(await state.contract.endTime());
       setUnixTime(_endTime)
-    //   console.log(_startTime,_endTime)
+      // console.log(_startTime,_endTime)
 
       let dateObj = new Date(_startTime * 1000);
-      let start = dateObj.toLocaleTimeString();
+      let start = dateObj.toLocaleString();
       setStartTime(start);
 
       let dateObj1 = new Date(_endTime * 1000);
-      let end = dateObj1.toLocaleTimeString();
+      let end = dateObj1.toLocaleString();
       setEndTime(end);
       // console.log(`${start},${end},${date} GMT`)
     } catch (error) {
@@ -37,26 +38,28 @@ const ElectionCard = ({ state, info }) => {
     // console.log("EndTime in unix " + endTimeInUnix)
     // console.log("Current time " + dte)
     if (endTimeInUnix > dte) {
-      console.log("Voting in progress");
+      // console.log("Voting in progress");
+      setStatus("Voting in progress")
       setPollEnded(false);
     } else {
-      console.log("Voting has ended");
+      setStatus("Voting has ended")
+      // console.log("Voting has ended");
       setPollEnded(true);
     }
   };
-//   console.log(pollEnded)
-// compare()
+
+
   useEffect(() => {
     getTime();
     compare();
   }, [pollEnded,startTime]);
 
   return (
-    <div className="w-[90%]  rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
-      <div className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900">
-        <div className=" items-center justify-start">
-          <div className="grid grid-cols-2 gap-4 items-center ">
-            <h1 className="text-md font-semibold tracking-wide whitespace-nowrap ">
+
+    <>
+      {/* Election status starts */}
+    <div className="grid grid-cols-2 gap-2 items-center ">
+            <h1 className=" tracking-wide text-gray-600 dark:text-gray-400 text-2xl whitespace-nowrap ">
               Election Status
             </h1>
             {/* Svg starts here */}
@@ -99,29 +102,64 @@ const ElectionCard = ({ state, info }) => {
             )}
 
             {/* Svg ends here */}
-          </div>
+    </div>
+    {/* Election status ends  */}
+    
+   {/* Box starts here */}
+    <div className="w-[90%]  rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
+      <div className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900">
+        <div className=" flex flex-col items-center justify-start gap-2">
+
+
+
+
+          <p className="text-gray-600 font-light text-lg md:-mt-2 lg:-mt-2"> {status} </p>
+
+          {/* <p className="text-gray-400 font-light text-md md:mt-2">Poll Timings</p>   */}
+
+            {/* POLL TIMINGS */}
+
+              {/* Current time starts */} 
+            <div className="grid grid-cols-2 font-extralight items-center md:mt-2">
+                <p className=" text-gray-500 text-sm whitespace-nowrap ">
+                  Current Time:
+                </p>
+                <p className=" text- font-semibold text-xs whitespace-nowrap ">
+                  {date}
+                </p>
+            </div>
+              {/* Current time ends */}
+
+
           <div className="flex space-x-20 items-center">
-            <div className="flex flex-col justify-center items-center font-extralight">
-              <p className=" text-gray-500 p-2 text-sm whitespace-nowrap ">
-                Start Time
+          
+              {/* Start time starts here */}
+            <div className="grid grid-rows-2 gap-2 font-extralight items-center">
+              <p className=" text-gray-500 text-sm whitespace-nowrap ">
+               Poll Start
               </p>
               <p className=" text-[#2ABB94] font-semibold text-xs ">
-                {startTime} IST
+                {startTime}
               </p>
             </div>
-
-            <div className="flex flex-col justify-center items-center font-extralight">
-              <p className=" text-gray-500 p-2 text-sm whitespace-nowrap ">
-                End Time
+              {/* Start time ends here */}
+              
+              {/* ends time starts here */}
+            <div className="grid grid-rows-2 gap-2 font-extralight items-center">
+              <p className=" text-gray-500 text-sm whitespace-nowrap ">
+                Poll End
               </p>
               <p className=" text-[#F784AD] font-semibold text-xs ">
-                {endTime} IST
+                {endTime}
               </p>
             </div>
+              {/* Start time starts here */}
           </div>
         </div>
       </div>
     </div>
+    {/* Box ends here */}
+    </>
   );
 };
 
