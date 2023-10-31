@@ -54,7 +54,7 @@ return (
 
             <div className="flex flex-col justify-center items-center mt-[10%]">
                 <h1 className="mb-10 tracking-wide text-gray-600 dark:text-gray-400 text-2xl ">
-                    Vote
+                    Enter Vote Timing
                 </h1>
                 {/* Form starts of Vote time */}
                 <form className="grid grid-rows-2 grid-flow-col gap-10" onSubmit={handleElection}>
