@@ -1,5 +1,7 @@
 import React from "react";
 import Navigation from "./Navigation";
+import  { toast } from 'sonner';
+
 
 const Voter = ({ state, handleCase }) => {
 
@@ -13,11 +15,11 @@ const Voter = ({ state, handleCase }) => {
 
     try{
         await state.contract.voterRegister.send(voterInfo.name,voterInfo.age,voterInfo.gender)
-        alert("Voter registered")
+        toast.success(`Voter ${voterInfo.name} registered succesfully`)
 
     }catch(error){
-        console.error(error)
-        alert(error)
+        console.table(error.shortMessage)
+        toast.error(error.reason)
     }
     console.log(voterInfo.name, voterInfo.age, voterInfo.gender);
   };
@@ -29,10 +31,10 @@ const Voter = ({ state, handleCase }) => {
 
     try {
       await state.contract.vote.send(voterId, candidateId);
-      alert("Voting done");
+      toast.success("User voted successfully");
     } catch (error) {
       console.error(error);
-      alert(error)
+      toast.error(error.reason)
     }
 
     // console.log(voterId,candidateId)
@@ -44,6 +46,7 @@ const Voter = ({ state, handleCase }) => {
         <Navigation />
         <div className="w-[60%] h-[70%]">
           <div className="grid grid-flow-col gap-10">
+
             {/* voter registration starts */}
             <div className="flex flex-col justify-center items-center mt-[10%]">
               <h1 className="mb-10 tracking-wide text-gray-600 dark:text-gray-400 text-2xl ">
@@ -79,7 +82,6 @@ const Voter = ({ state, handleCase }) => {
               {/* Form for voter registraation ends here */}
 
             </div>
-
             {/* voter registration ends */}
 
             {/* Vote starts */}
@@ -114,6 +116,7 @@ const Voter = ({ state, handleCase }) => {
                 {/* Vote form starts here */}
             </div>
             {/* Vote Ends */}
+
           </div>
         </div>
       </div>

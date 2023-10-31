@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 
 const ElectionCard = ({ state, info }) => {
   const date = new Date().toLocaleString();
-//   const dat = new Date().getTime()
-//   console.log(dat)
 
   const [startTime, setStartTime] = useState(date);
   const [endTime, setEndTime] = useState(date);
@@ -28,11 +26,11 @@ const ElectionCard = ({ state, info }) => {
       setEndTime(end);
       // console.log(`${start},${end},${date} GMT`)
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
-  const compare = async () => {
+  const compare = () => {
     let dte = new Date().getTime()
     dte = Math.floor(dte/1000)
     // console.log("EndTime in unix " + endTimeInUnix)
@@ -50,10 +48,21 @@ const ElectionCard = ({ state, info }) => {
 
 
   useEffect(() => {
-    getTime();
-    compare();
-  }, [pollEnded,startTime]);
+       getTime();
+  }, []);
 
+  useEffect(()=>{
+    if(!endTime){
+      return 
+    }
+
+    let interval = setInterval(()=>{
+      compare()
+    },1000)
+    return ()=>{clearInterval(interval)}
+  },[endTime])
+
+  // react life cycle
   return (
 
     <>
@@ -106,18 +115,17 @@ const ElectionCard = ({ state, info }) => {
     {/* Election status ends  */}
     
    {/* Box starts here */}
-    <div className="w-[90%]  rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
+    <div className="w-[90%] rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
       <div className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900">
-        <div className=" flex flex-col items-center justify-start gap-2">
 
-
+        <div className="  flex flex-col flex-wrap items-center justify-start gap-2">
 
 
           <p className="text-gray-600 font-light text-lg md:-mt-2 lg:-mt-2"> {status} </p>
 
           {/* <p className="text-gray-400 font-light text-md md:mt-2">Poll Timings</p>   */}
 
-            {/* POLL TIMINGS */}
+            
 
               {/* Current time starts */} 
             <div className="grid grid-cols-2 font-extralight items-center md:mt-2">
@@ -131,8 +139,9 @@ const ElectionCard = ({ state, info }) => {
               {/* Current time ends */}
 
 
+              {/* POLL TIMINGS Starts here */}
           <div className="flex space-x-20 items-center">
-          
+        
               {/* Start time starts here */}
             <div className="grid grid-rows-2 gap-2 font-extralight items-center">
               <p className=" text-gray-500 text-sm whitespace-nowrap ">
@@ -144,7 +153,7 @@ const ElectionCard = ({ state, info }) => {
             </div>
               {/* Start time ends here */}
               
-              {/* ends time starts here */}
+              {/* END time starts here */}
             <div className="grid grid-rows-2 gap-2 font-extralight items-center">
               <p className=" text-gray-500 text-sm whitespace-nowrap ">
                 Poll End
@@ -153,9 +162,12 @@ const ElectionCard = ({ state, info }) => {
                 {endTime}
               </p>
             </div>
-              {/* Start time starts here */}
+              {/* END time finishes here */}
           </div>
+              {/* POLL TIMINGS ends here */}
+
         </div>
+
       </div>
     </div>
     {/* Box ends here */}

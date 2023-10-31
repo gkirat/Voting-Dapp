@@ -6,6 +6,8 @@ import ElectionCard from "../components/ElectionCard";
 import Winner from "../components/Winner";
 import { useEffect, useState } from "react";
 import { createClient, cacheExchange, fetchExchange } from "@urql/core";
+import { toast } from "sonner";
+// import { Link } from "react-router-dom";
 
 
 const Dashboard = ({ state, info, details, pIdEc, setinfo }) => {
@@ -62,8 +64,8 @@ const Dashboard = ({ state, info, details, pIdEc, setinfo }) => {
   };
 
   useEffect(() => {
-    getPidEc();
-    setifo();
+     getPidEc();
+     setifo();
   }, []);
 
   // console.log(info.candidates.length)

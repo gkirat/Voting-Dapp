@@ -4,10 +4,12 @@ import Dashboard from "./pages/Dashboard";
 import Candidate from "./pages/Candidate";
 import Voter from "./pages/Voter";
 import ElectionCommission from "./pages/ElectionCommission";
-import { RouterProvider,createBrowserRouter } from "react-router-dom";
-import {useState} from 'react';
-// import {createClient,cacheExchange,fetchExchange} from "@urql/core"
+// import { RouterProvider,createBrowserRouter,Navigate,Router,Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
+import {useState,useEffect} from 'react';
 import "./App.css";
+import {toast,Toaster} from "sonner";
+
 
 
 
@@ -28,10 +30,11 @@ function App() {
   })
 
 
+  // const navigate = useNavigate();
+
   const setinfo = async(data)=>{
     setInfo(data)
   }
-
 
   const details = async(_pollId,_EcAddress) =>{
       setPIdEc({pollId:_pollId,EcAddress:_EcAddress})
@@ -48,17 +51,22 @@ function App() {
     temp1 = temp1.toLowerCase()
     return (temp  + temp1)
   }
+
+    const checkLogin= ()=>{
+    // const stat = await state
+    if(state.provider === null || state.contract === null  || state.signer === null ){
+      toast.error("Please login again")
+      // return <Navigate to="/" />
+      // return false
+    }
+    return true;
+  }
   
+  useEffect(()=>{
+    checkLogin()
+  },[state])
 
 
-  const router = createBrowserRouter([
-    {path:"/",element:<Login wallet={wallet} />},
-    // {path:"/Dashboard",element:<Dashboard state={state} info={info} details={details} setinfo={setinfo}  />},
-    {path:"/Dashboard",element:<Dashboard state={state} info={info} details={details} setinfo={setinfo} pIdEc={pIdEc}  />},
-    {path:"/Candidate",element:<Candidate state={state} handleCase={handleCase} />},
-    {path:"/Voter",element:<Voter state={state} handleCase={handleCase}  />},
-    {path:"/ElectionCommission",element:<ElectionCommission state={state} handleCase={handleCase} />},
-  ])
 
   console.log("Logged in user Id", state.signer)
   // console.log(state)
@@ -67,20 +75,41 @@ function App() {
 
 
   return ( 
-  
+    <>
     <div className="bg-slate-50 w-full h-screen dark:bg-slate-800  overflow-hidden transition-colors duration-700 ">
       
       <Nav />
-      <RouterProvider router={router} />
 
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login wallet={wallet} />} />
+        <Route path="/Dashboard" element={<Dashboard state={state} info={info} details={details} setinfo={setinfo} pIdEc={pIdEc}  />} />
+        <Route path="Candidate" element={<Candidate state={state} handleCase={handleCase} />} />
+        <Route path="/Voter" element={<Voter state={state} handleCase={handleCase}  />} />
+        <Route path="/ElectionCommission" element={<ElectionCommission state={state} handleCase={handleCase} />} />
+      </Routes>
+    </Router>
+
+
+      <Toaster richColors position="top-center" closeButton />
     </div>
-
+    </>
   );
 }
 
 export default App;
 
 
+
+  // const router = createBrowserRouter([
+  //   {path:"/",element:<Login wallet={wallet} />},
+  //   {path:"/Dashboard",element:<Dashboard state={state} info={info} details={details} setinfo={setinfo} pIdEc={pIdEc}  />},
+  //   {path:"/Candidate",element:<Candidate state={state} handleCase={handleCase} />},
+  //   {path:"/Voter",element:<Voter state={state} handleCase={handleCase}  />},
+  //   {path:"/ElectionCommission",element:<ElectionCommission state={state} handleCase={handleCase} />},
+  // ])
+    // {/* {checkLogin() ? <Navigate to="/Dashboard" /> :<Navigate to="/" />} */}
+          // {/* <RouterProvider router={router} /> */}
 
 // import Login from "./pages/Login";
 // import Nav from "./pages/Nav";
@@ -318,3 +347,6 @@ export default App;
   // useEffect(()=>{
   //   setinfo()
   // },[])
+
+
+

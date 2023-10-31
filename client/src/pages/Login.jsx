@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import Abi from "../contracts/Abi.json";
+import { toast } from "sonner";
 
 const contractAdd = "0x1d50A75128E3295Df4cE9E5D5cc3AC5d02881134";
 
@@ -18,24 +19,25 @@ const Login = ({ wallet }) => {
           await provider.send("eth_requestAccounts", []);
           const signer = await provider.getSigner();
           const contract = new ethers.Contract(contractAdd, Abi.abi, signer);
-          alert("Metamask connected");
+          toast.success("Metamask connected");
           setWalletConnected(true);
           wallet(provider, contract, signer.address);
           navigate("/Dashboard");
         } catch (error) {
-          console.error(error.message);
+          toast.error(error.message);
         }
       } else {
-        alert("Please select MUMBAI test network");
+        toast.error("Please select MUMBAI test network");
       }
     } else {
-      alert("Please install metamask");
+      toast.error("Please install metamask");
     }
   };
 
   return (
     <div className="flex h-[90%] ">
       <div className="w-[50%] bg-slate-50 h-[90%] flex flex-col justify-center items-center flex-wrap dark:bg-slate-800 ">
+
         <div className="grid grid-rows-2 grid-flow-col w-[50%] ">
           <div>
             <h1 className=" text-[#4263EB] md:text-4xl  ">Voting Dapp</h1>
@@ -48,9 +50,11 @@ const Login = ({ wallet }) => {
             </p>
           </div>
         </div>
+
       </div>
 
       <div className="w-[48%] h-[90%] bg-slate-50 flex justify-center items-center flex-col relative dark:bg-slate-800  ">
+        
         <div className="bg-white w-[70%] h-[95%] flex flex-col justify-center items-center space-y-20  rounded-xl dark:bg-slate-900 shadow-2xl  dark:shadow-cyan-500/50  ">
           <div>
             <img
@@ -64,21 +68,24 @@ const Login = ({ wallet }) => {
           </div>
 
           <div>
-            {walletConnected ? (
-              <button className=" bg-[#4263EB] p-3 rounded-md text-white hover:bg-[#4e6dec] shadow-2xl shadow-[#4e6dec] transition-all ease-in-out">
+            {walletConnected ? 
+            (
+              <button className=" bg-[#4263EB] p-3 rounded-md text-white hover:bg-[#4e6dec] shadow-2xl shadow-[#4e6dec]  transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50">
                 Connected to Wallet
               </button>
             ) : (
               <button
-                className=" bg-[#4263EB] p-3 rounded-md text-white hover:bg-[#4e6dec] shadow-2xl shadow-[#4e6dec] transition-all ease-in-out"
+                className=" bg-[#4263EB] p-3 rounded-md text-white hover:bg-[#4e6dec] shadow-2xl shadow-[#4e6dec] transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50"
                 onClick={connectWallet}
               >
                 Connect Wallet
               </button>
             )}
+
           </div>
         </div>
       </div>
+
     </div>
   );
 };

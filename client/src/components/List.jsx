@@ -6,10 +6,6 @@ const List = ({state,name,party,id, setValue}) => {
   
   const [fill, setFill] = useState();
   
-  
-  
-
-
   useEffect(() => {
     setFill(setValue);
   }, [fill]);

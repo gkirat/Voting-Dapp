@@ -7,7 +7,7 @@ const Navigation = () => {
   return (
     <div className="flex h-[100%] -mt-20 ">
 
-      <div className="  w-72 h-[100%] px-4 pt-4 bg-white dark:text-slate-50 dark:bg-slate-950 shadow-2xl rounded-r-lg   duration-200 " >
+      <div className=" relative w-72 h-[100%] px-4 pt-4 bg-white dark:text-slate-50 dark:bg-slate-950 shadow-2xl rounded-r-lg   duration-200 " >
 
         <div className="flex space-x-2 items-center mb-4" >
            <img className="h-[80px] mb-2  " src="https://voting-dapp.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fsvg%2Flogo.b954829cff7fddca2bb11cc74a1876a5.svg&w=384&q=75" alt=""></img>
@@ -52,8 +52,33 @@ const Navigation = () => {
                       <p className="ml-3">Election Commission</p>
                   </button>
               </Link>
+        </div>
 
+        <div className="">
+          {/* Author */}
+            <div className="absolute bottom-5 left-5 flex flex-col">
+            <p className="ml-4 font-extralight">Author</p>
+              <div className="flex gap-4">
+                <a href="https://www.github.com/gkirat" target="_blank" rel="noreferrer">
+                  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" alt="GitHub" />
+                </a>
+                <a href="https://www.linkedin.com/in/gurkirat-singh-4b0652222" target="_blank" rel="noreferrer">
+                  <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" alt="LinkedIn" />
+                </a>
+              </div>
+            </div>
 
+        {/* Logout */}
+          <div className=" absolute bottom-5 right-5 ">
+            <Link to="/">
+              <div className="flex gap-4">
+                <p className=" font-extralight" >Log out</p>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="red" className="w-7 h-7">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

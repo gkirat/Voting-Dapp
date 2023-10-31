@@ -1,4 +1,5 @@
 import React from "react";
+import  { toast } from 'sonner';
 
 const Button = ({ event,id ,state}) => {
 
@@ -7,10 +8,10 @@ const Button = ({ event,id ,state}) => {
         const voterId = Number(await state.contract.checkVoterID());
         console.log(id,voterId)
         await state.contract.vote.send(voterId,id)
-        alert("You have successfully Voted")
-      } catch (error) {
+        toast.success("You have successfully Voted")
+      } catch (error){
         console.error(error);
-        alert(error)
+        toast.error(error.reason)
       }
   }
 

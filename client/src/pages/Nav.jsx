@@ -10,7 +10,7 @@ const [darkMode, setMode] = useState(() => {
 });
 
     
-    useEffect(() => {
+  useEffect(() => {
     localStorage.setItem('mode', darkMode ? 'dark' : 'light');
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -24,9 +24,9 @@ const toggleTheme = () => {
   setMode((prevMode) => !prevMode);
 };
 
-    function handleProfile(){
+  const handleProfile = ()=> {
       console.log("Profile")
-    }
+  }
 
   return (
 <nav className="sticky top-0 p-2 flex justify-end  h-20 items-center w-[10%] ml-[90%]  z-10 space-x-3 ">

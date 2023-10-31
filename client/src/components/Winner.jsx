@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const Winner = ({state}) => {
 
-    const date = new Date().toLocaleString();
+
     // const [endTime, setEndTime] = useState(date);
     const [pollEnded, setPollEnded] = useState();
     const [endTimeInUnix,setUnixTime] = useState()
@@ -12,21 +12,19 @@ const Winner = ({state}) => {
         name:null,
         party:null
     })
-    // const [status,setStatus] = useState()
   
     const getTime = async () => {
       try {
         const _endTime = Number(await state.contract.endTime());
         setUnixTime(_endTime)
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
   
     const compare = async () => {
       await getTime()
-      
-      // console.log(ended)
+
       let dte = new Date().getTime()
       dte = Math.floor(dte/1000)
       if (endTimeInUnix > dte) {
@@ -38,14 +36,14 @@ const Winner = ({state}) => {
           const name = (val[1])
           const party = (val[2])
           setWinnerInfo({id,name,party})
-        //   console.log(val[0],val[1],val[2],val[3])
+          // console.log(val[0],val[1],val[2],val[3])
         }catch(error){
           console.log(error)
         }
         setPollEnded(true);
       }
     };
-    console.log(winnerInfo)
+    // console.log(winnerInfo)
 
     useEffect(()=>{
         compare()
@@ -53,8 +51,8 @@ const Winner = ({state}) => {
   
   return (
         <>
-      <div className="w-[90%]  rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
-            <div className="rounded-[calc(1.5rem-1px)] p-3 w-[100%] bg-white dark:bg-gray-900 ">
+      <div className="w-[100%]  rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
+            <div className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900 ">
             <div className="flex gap-4 items-center justify-around">
 
                 {/* party and name starts here  */}

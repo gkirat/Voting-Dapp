@@ -12,9 +12,12 @@
     "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "sonner": "^1.0.3",
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.4.4"
   },
   "scripts": {
     "start": "react-scripts start",

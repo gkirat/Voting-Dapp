@@ -1,40 +1,47 @@
 import React from 'react'
 import Navigation from "./Navigation"
+import  { toast } from 'sonner';
+
 
 const ElectionCommission = ({state}) => {
 
-    const handleElection = async (event)=>{
+  
+    const handleElection = async(event)=>{
         event.preventDefault()
         const start = document.querySelector("#startT").value
         const end = document.querySelector("#endT").value
+        const date  = new Date()
         try{
           const tx =  await state.contract.voteTime.send(start,end)
           await tx.wait()
-          alert("Voting has been initialised")
+          toast.success("Voting has been initialised" ,{description:`${date.toString().slice(0,3)}, ${date.toString().slice(4,7)} ${date.getDate()} at ${date.toLocaleTimeString()} `})
+        
         }catch(error){
           console.error(error)
-          alert(error)
+          toast.error(error.reason)
         }
 
-        // console.log(start,end)
+        console.log(start,end)
     }
 
     const handleEmergency = async()=>{
       try{
         await state.contract.emergency()
-        alert("Emergency has been declared")
+        toast.success("Emergency has been declared")
       }catch(error){
-        alert(error)
+        console.error(error)
+        toast.error(error.reason)
       }
     }
 
 
-    const handleResult =async()=>{
+    const handleResult = async()=>{
       try{
         await state.contract.result()
-        alert("Result has been declared")
+        toast.success("Result has been declared")
       }catch(error){
-        alert(error)
+        console.error(error)
+        toast.error(error.reason)
       }
     }
 
@@ -95,11 +102,6 @@ return (
             
         </div>
       </div>
-
-
-        // </div>
-    
-    
   )
 }
 

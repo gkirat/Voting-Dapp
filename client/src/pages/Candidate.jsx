@@ -1,11 +1,11 @@
 import React from 'react'
 import Navigation from "./Navigation"
-
+import  { toast } from 'sonner';
 
 
 const Candidate = ({state,handleCase}) => {
 
-    const handleInfo = async (event)=>{
+  const handleInfo = async (event)=>{
         event.preventDefault()
         const candidatesInfo = {
           name: handleCase(document.querySelector("#name").value),
@@ -16,14 +16,15 @@ const Candidate = ({state,handleCase}) => {
 
         try{
           await state.contract.candidateRegister.send(candidatesInfo.name,candidatesInfo.party,candidatesInfo.age,candidatesInfo.gender)
-          alert("Candidate registeration successful")
+          toast.success(`Candidate ${candidatesInfo.name} registered successfully`)
           // window.location.reload()
        } catch(error){
-           console.error(error)
-           alert(error)
+           console.log(error)
+           toast.error(error.reason)
         }
-        console.log(candidatesInfo.name,candidatesInfo.party,candidatesInfo.age,candidatesInfo.gender)
-    }
+        // console.log(candidatesInfo.name,candidatesInfo.party,candidatesInfo.age,candidatesInfo.gender)
+  }
+
 
   return (
     <div className="flex  h-[100%] space-x-32">
