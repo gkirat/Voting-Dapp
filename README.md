@@ -2,7 +2,11 @@
 
 Build using Ethereum, React.js, Tailwind CSS, The Graph, and ethers.js
 
- <img className="h-[100%] " src="https://voting-dapp.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fsvg%2Flogo.b954829cff7fddca2bb11cc74a1876a5.svg&w=384&q=75" alt=""></img>
+
+<img width="1440" alt="Screenshot 2023-11-01 at 11 20 50 PM" src="https://github.com/gkirat/Voting-Dapp/assets/103166972/bccd890a-c669-49e6-8db0-8dacd8eaecfc">
+
+
+ 
 
 ## Table of Contents
 - [Project Description](#project-description)
