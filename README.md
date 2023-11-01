@@ -25,6 +25,7 @@ Build using Ethereum, React.js, Tailwind CSS, The Graph, and ethers.js.
 - [Ethers.js](#ethersjs)
 - [Contributing](#contributing)
 - [Credits](#credits)
+- [Author](#author)
 - [License](#license)
 
 ## Project Description
@@ -140,5 +141,10 @@ Contributions are welcome! If you'd like to contribute to this project, please o
 
 ## Credits
 The design was insipred by [iykee Okonkwo](https://www.linkedin.com/in/iykeeokonkwo/) you could see his design on [Here](https://dribbble.com/shots/17547198-Voting-DAPP-Poll-History)
+
+## Author
+- Name: Gurkirat
+- GitHub: [github.com/gkirat](https://github.com/gkirat)
+
 ### License 
-This project is licensed under the terms of the [License](License).
+This project is licensed under the terms of the [License](https://github.com/gkirat/Voting-Dapp/blob/master/LICENSE).
