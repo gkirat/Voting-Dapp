@@ -141,4 +141,4 @@ Contributions are welcome! If you'd like to contribute to this project, please o
 ## Credits
 The design was insipred by [iykee Okonkwo](https://www.linkedin.com/in/iykeeokonkwo/) you could see his design on [Here](https://dribbble.com/shots/17547198-Voting-DAPP-Poll-History)
 ### License 
-This project is licensed under the terms of the [License]().
+This project is licensed under the terms of the [License](License).
