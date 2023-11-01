@@ -5,13 +5,8 @@ To check out Full-Stack Voting-Dapp [Click Here](https://polling-dapp.vercel.app
 Build using Ethereum, React.js, Tailwind CSS, The Graph, and ethers.js.
 
 
-
-
-
 <img width="1440" alt="Screenshot 2023-11-01 at 11 20 50 PM" src="https://github.com/gkirat/Voting-Dapp/assets/103166972/bccd890a-c669-49e6-8db0-8dacd8eaecfc">
 
-
- 
 
 ## Table of Contents
 - [Project Description](#project-description)
@@ -98,7 +93,7 @@ To set up and run the project, follow these steps:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/gkirat/Voting-Dapp.git
 
 2. Change into the project directory:
    ```bash
