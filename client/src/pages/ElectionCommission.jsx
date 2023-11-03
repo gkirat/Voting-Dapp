@@ -54,18 +54,18 @@ return (
 
             <div className="flex flex-col justify-center items-center mt-[10%]">
                 <h1 className="mb-10 tracking-wide text-gray-600 dark:text-gray-400 text-2xl ">
-                    Enter Vote Timing
+                    Enter Vote Timing (In seconds)
                 </h1>
                 {/* Form starts of Vote time */}
                 <form className="grid grid-rows-2 grid-flow-col gap-10" onSubmit={handleElection}>
 
                     <div className="grid grid-rows-2 grid-flow-col gap-10">
                         <div className="w-[100%] col-span-10 rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
-                            <input className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900 dark:text-slate-200  h-10" placeholder="Start time " name="" id="startT" ></input>
+                            <input className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900 dark:text-slate-200  h-10" placeholder="Start time in seconds" name="" id="startT" ></input>
                         </div>
 
                         <div className="w-[100%] col-span-10 rounded-3xl p-px bg-gradient-to-b from-blue-300 to-pink-300 dark:from-blue-800 dark:to-purple-800 transition-all duration-700 hover:shadow-[0_3px_10px_rgb(0.4,0.4,0.4,0.4)] dark:hover:shadow-cyan-500/50 ">
-                            <input className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900 dark:text-slate-200  h-10" placeholder="End time" name="" id="endT"  ></input>
+                            <input className="rounded-[calc(1.5rem-1px)] p-6 w-[100%] bg-white dark:bg-gray-900 dark:text-slate-200  h-10" placeholder="End time in seconds" name="" id="endT"  ></input>
                         </div>
                     </div>
 
