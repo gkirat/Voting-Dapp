@@ -1,11 +1,11 @@
 # Full-Stack Voting-Dapp
 
-To check out Full-Stack Voting-Dapp [Click Here](https://polling-dapp.vercel.app)
+To check out Full-Stack Voting-Dapp [Click Here](https://polling-dapp.vercel.app/)
 
 Build using Ethereum, React.js, Tailwind CSS, The Graph, and ethers.js.
 
 
-<img width="1440" alt="Screenshot 2023-11-01 at 11 20 50 PM" src="https://github.com/gkirat/Voting-Dapp/assets/103166972/bccd890a-c669-49e6-8db0-8dacd8eaecfc">
+[<img width="1440" alt="Screenshot 2023-11-01 at 11 20 50 PM" src="https://github.com/gkirat/Voting-Dapp/assets/103166972/bccd890a-c669-49e6-8db0-8dacd8eaecfc">](https://polling-dapp.vercel.app)
 
 
 ## Table of Contents
@@ -62,7 +62,7 @@ Our Full-Stack dApp offers an innovative solution to these challenges:
 
 ### Key Features
 
-- **Candidate Registration**: Aspiring candidates can easily register to run for office, providing their name, party affiliation, and personal information.
+- **Candidate Registration**: Aspiring candidates can easily register, providing their name, party affiliation, and personal information.
 
 - **Voter Registration**: Eligible voters can register with their name, age, and gender.
 
@@ -112,7 +112,7 @@ To set up and run the project, follow these steps:
 
 ## Usage
 - Election 
-- Register as a Candidate: If you want to run for office, you can register as a candidate.
+- Register as a Candidate: If you want to run for a candidate in the elections, you can register as a candidate.
 - Register as a Voter: If you're eligible to vote, you can register as a voter.
 - Vote: During the voting period, you can vote for your preferred candidate.
 - View Results: Once the election ends, you can view the election results.
