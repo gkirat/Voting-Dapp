@@ -266,3 +266,36 @@ contract Vote {
     }
 
 }
+
+// ADDED 
+// added a new mapping which cheks if the person has voted or not and two functions which checks if candidate is registred or not and voted or not 
+
+
+
+// Mumbai test-5 
+// 0x600596e684a07ba2c9c6840cbc1c1Bf6247b97C7
+
+
+// ADDED 
+// Added checkkvoterId function and mapping so that user could directly vote from dashboard
+// added in candidate event the candidate Id so that user could vote from frontend
+
+// Mumbai test-6
+// 0x949233D6b00A6856f8Aab22D7A5a3AE228d7b159
+
+// made  a mistake in the frontend in the query syntax thought , that it was not fetching data so redeployed subgraph
+
+// Mumbai test-7
+// 0xbD1eE138543B437E680842d3615c9C8a60A81d18
+
+// CHANGED 
+// Changed ecPolls mapping mapping(address => PollInfo[]) to mapping(uint => PollInfo[]) so that we could access the winner
+
+// Mumbai test-8
+// 0x6fEf619d6039d84F18D8Cb9932Ab160803233bEa
+
+// ADDED 
+// changed the EcPollInfo so that i get particualar items in frontend
+
+// Mumbai test-9
+// 0x1d50A75128E3295Df4cE9E5D5cc3AC5d02881134
