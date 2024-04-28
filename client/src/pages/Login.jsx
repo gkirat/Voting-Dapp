@@ -5,15 +5,17 @@ import { ethers } from "ethers";
 import Abi from "../contracts/Abi.json";
 import { toast } from "sonner";
 
-const contractAdd = "0x1d50A75128E3295Df4cE9E5D5cc3AC5d02881134";
+// const contractAdd = "0x1d50A75128E3295Df4cE9E5D5cc3AC5d02881134";
+const contractAdd = "0x2183373d076ca1b8aEbE541597A1B04dC7101a1F";
 
 const Login = ({ wallet }) => {
   const [walletConnected, setWalletConnected] = useState(false);
   const navigate = useNavigate();
 
   const connectWallet = async () => {
+    console.log(window.ethereum.chainId)
     if (typeof window != "undefined" && typeof window.ethereum != "undefined") {
-      if (window.ethereum.chainId === "0x13881") {
+      if (window.ethereum.chainId === "0xaa36a7") {
         try {
           const provider = new ethers.BrowserProvider(window.ethereum);
           await provider.send("eth_requestAccounts", []);
@@ -27,7 +29,7 @@ const Login = ({ wallet }) => {
           toast.error(error.message);
         }
       } else {
-        toast.error("Please select MUMBAI test network");
+        toast.error("Please select Sepolia test network");
       }
     } else {
       toast.error("Please install metamask");
