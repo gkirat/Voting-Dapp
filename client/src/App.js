@@ -9,6 +9,8 @@ import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import {useState,useEffect} from 'react';
 import "./App.css";
 import {toast,Toaster} from "sonner";
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 
 
@@ -79,7 +81,8 @@ function App() {
     <div className="bg-slate-50 w-full h-screen dark:bg-slate-800  overflow-hidden transition-colors duration-700 ">
       
       <Nav />
-
+    <Analytics />
+    <SpeedInsights />
     <Router>
       <Routes>
         <Route path="/" element={<Login wallet={wallet} />} />
