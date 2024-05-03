@@ -9,6 +9,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@urql/core": "^4.1.4",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "ethers": "^6.12.0",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
