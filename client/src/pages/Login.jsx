@@ -13,7 +13,7 @@ const Login = ({ wallet }) => {
   const navigate = useNavigate();
 
   const connectWallet = async () => {
-    console.log(window.ethereum.chainId)
+    // console.log(window.ethereum.chainId)
     if (typeof window != "undefined" && typeof window.ethereum != "undefined") {
       if (window.ethereum.chainId === "0xaa36a7") {
         try {
